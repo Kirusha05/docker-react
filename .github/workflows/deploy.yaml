@@ -8,10 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
-      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t cugureanu/frontend -f Dockerfile.dev .
-      - run: docker run cugureanu/frontend npm run test
+      - uses: actions/checkout@v4
+      - name: Login to Docker
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build the image
+        run: docker build -t cugureanu/frontend -f Dockerfile.dev .
+      - name: Run the image with the test command
+        run: docker run cugureanu/frontend npm run test
  
       # - name: Generate deployment package
       #   run: zip -r deploy.zip . -x '*.git*'
