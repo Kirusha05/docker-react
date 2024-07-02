@@ -22,7 +22,7 @@ function App() {
           count is {count}
         </button>
         <p>
-          Norocel si pacica la toti
+          Norocel și pacică la toți (de pe alta creangă)
         </p>
       </div>
       <p className="read-the-docs">
