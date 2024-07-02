@@ -17,16 +17,16 @@ jobs:
         run: docker run cugureanu/frontend npm run test
  
       # - name: Generate deployment package
-      #   run: zip -r deploy.zip . -x '*.git*'
+        run: zip -r deploy.zip . -x '*.git*'
  
       # - name: Deploy to EB
-      #   uses: einaregilsson/beanstalk-deploy@v21
-      #   with:
-      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-      #     aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-      #     application_name: docker-gh
-      #     environment_name: Dockergh-env
-      #     existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
-      #     region: us-east-1
-      #     version_label: ${{ github.sha }}
-      #     deployment_package: deploy.zip
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: frontend
+          environment_name: Frontend-env
+          existing_bucket_name: elasticbeanstalk-eu-central-1-339713009960
+          region: eu-central-1
+          version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
