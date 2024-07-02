@@ -16,10 +16,10 @@ jobs:
       - name: Run the image with the test command
         run: docker run cugureanu/frontend npm run test
  
-      # - name: Generate deployment package
+      - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
  
-      # - name: Deploy to EB
+      - name: Deploy to ElasticBeanstalk
         uses: einaregilsson/beanstalk-deploy@v22
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
